@@ -1,29 +1,38 @@
 N = int(input())
-Arr1 = list(map(int, input().split(' ')))
-Arr2 = []
+Arr = list(map(int, input().split(' ')))
 
-for i in range(1, N):
-    Arr2.append(Arr1[i-1] - Arr1[i])
+plus = minus = max_len = 0
+pcnt = mcnt = 1
+for n in range(1, N):
+    if Arr[n-1] <= Arr[n]:
+        if not plus:
+            plus = 1
+        pcnt += 1
+    else:
+        if plus and max_len < pcnt:
+            max_len = pcnt
+        plus = 0
+        pcnt = 1
 
-maxLen = 0
-for n in range(N-1):
-    if Arr2[n] >= 0:
-        Mcnt = 1
-        for m1 in range(n, N-1):
-            if Arr2[m1] >= 0:
-                Mcnt += 1
-            else:
-                break
-        if maxLen <= Mcnt:
-            maxLen = Mcnt
-    if Arr2[n] <= 0:
-        Pcnt = 1
-        for m2 in range(n, N-1):
-            if Arr2[m2] <= 0:
-                Pcnt += 1
-            else:
-                break
-        if maxLen <= Pcnt:
-            maxLen = Pcnt
+if plus and max_len < pcnt:
+    max_len = pcnt
 
-print(maxLen)
+
+for n in range(1, N):
+    if Arr[n-1] >= Arr[n]:
+        if not minus:
+            minus = 1
+        mcnt += 1
+    else:
+        if minus and max_len < mcnt:
+            max_len = mcnt
+        minus = 0
+        mcnt = 1
+
+if minus and max_len < mcnt:
+    max_len = mcnt
+
+if N == 1:
+    max_len = 1
+
+print(max_len)
