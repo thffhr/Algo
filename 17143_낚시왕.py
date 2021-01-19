@@ -15,7 +15,11 @@ for c in range(1, C+1):
         Shark.pop(idx)
     for m in range(len(Shark)):
         if Shark[m][5]:
-            ms = Shark[m][2]
+            if Shark[m][3] < 3:
+                num = (R-1)*2
+            else:
+                num = (C-1)*2
+            ms = Shark[m][2] // num
             while ms > 0:
                 ms -= 1
                 if Shark[m][3] == 1:
@@ -54,8 +58,4 @@ for c in range(1, C+1):
         Check_idx.pop(Check_size.index(max(Check_size)))
         for check in range(len(Check_idx)):
             Shark[Check_idx[check]][5] = 0
-                    # if Shark[m1][4] > Shark[m2][4] and m2 not in Check:
-                    #     Check.append(m2)
-    # for check in range(len(Check)):
-    #     Shark.pop(Check[check]-check)
 print(aws)
