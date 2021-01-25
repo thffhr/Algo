@@ -14,7 +14,7 @@ for rr in range(2*R):
             Input[2] += 1
         else:
             Input[3] += 1
-    if rr//2 or rr == 0:
+    if rr == 0 or not rr%2:
         A.append(copy.deepcopy(Input))
     else:
         B.append(copy.deepcopy(Input))
