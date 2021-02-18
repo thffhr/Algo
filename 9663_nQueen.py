@@ -18,3 +18,4 @@ cnt = 0
 
 nQueen(0)
 print(cnt)
+
